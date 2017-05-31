@@ -16,14 +16,14 @@ module.exports = function (app, passport) {
 	var clickHandler = new ClickHandler();
 
 	app.route('/')
-		.get(isLoggedIn, function (req, res) {
+		.get(function (req, res) {
 			res.sendFile(path + '/public/index.html');
 		});
 
-	app.route('/login')
-		.get(function (req, res) {
-			res.sendFile(path + '/public/login.html');
-		});
+	// app.route('/login')
+	// 	.get(function (req, res) {
+	// 		res.sendFile(path + '/public/login.html');
+	// 	});
 
 	app.route('/logout')
 		.get(function (req, res) {
@@ -31,9 +31,9 @@ module.exports = function (app, passport) {
 			res.redirect('/login');
 		});
 
-	app.route('/profile')
+	app.route('/mypolls')
 		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/profile.html');
+			res.sendFile(path + '/public/mypolls.html');
 		});
 
 	app.route('/api/:id')
